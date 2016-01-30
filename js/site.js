@@ -142,16 +142,19 @@ $(document).ready(function() {
   var url = 'http://opensourcedesign.net/events/feed.xml';
 
   var items_html = '';
-  $.ajax(url, function(d){
-    $(d).find('item').each(function() {
-      var $ev = $(this);
-      var item = {
-        title: $ev.find('title').text(),
-        link: $ev.find('link').text()
-      };
-      items_html = template_item(item);
-    });
-    $('#events-snapshot').html(items_html);
+  $.ajax({
+    url: url, 
+    success: function(d){
+      $(d).find('item').each(function() {
+        var $ev = $(this);
+        var item = {
+          title: $ev.find('title').text(),
+          link: $ev.find('link').text()
+        };
+        items_html = template_item(item);
+      });
+      $('#events-snapshot').html(items_html);
+    }
   });
 });
 
@@ -163,16 +166,18 @@ $(document).ready(function() {
   var url = 'http://opensourcedesign.net/jobs/feed.xml';
 
   var items_html = '';
-  $.ajax(url, function(d){
-
-    $(d).find('item').each(function() {
-      var $ev = $(this);
-      var item = {
-        title: $ev.find('title').text(),
-        link: $ev.find('link').text()
-      };
-      items_html = template_item(item);
-    });
-    $('#jobs-snapshot').html(items_html);
+  $.ajax({
+    url: url, 
+    success: function(d){
+      $(d).find('item').each(function() {
+        var $ev = $(this);
+        var item = {
+          title: $ev.find('title').text(),
+          link: $ev.find('link').text()
+        };
+        items_html = template_item(item);
+      });
+      
+    }
   });
 });
